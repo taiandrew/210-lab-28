@@ -64,7 +64,9 @@ int main() {
                 clear_goats(trip);
                 break;
             case 5:
-
+                cout << "Checking for goats >=10 yrs old.\n";
+                any_old(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -145,4 +147,9 @@ void clear_goats(list<Goat> &trp) {
 
 void any_old(list<Goat> trp) {
     bool hasOldGoat = any_of(trp.begin(), trp.end(), [](Goat g) { return g.get_age() > 10; });
+    if (hasOldGoat) {
+        cout << "There is at least one goat aged 10 or older in the trip.\n";
+    } else {
+        cout << "There are no goats aged 10 or older in the trip.\n";   
+    }
 }
