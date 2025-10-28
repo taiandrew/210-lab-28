@@ -13,6 +13,9 @@ void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 int main_menu();
+void clear_goats(list<Goat> &trp);
+void any_old(list<Goat> &trp);
+void all_old(list<Goat> &trp);
 
 int main() {
     srand(time(0));
@@ -66,6 +69,10 @@ int main() {
             case 5:
                 cout << "Checking for goats >=10 yrs old.\n";
                 any_old(trip);
+                break;
+            case 6:
+                cout << "Checking if all goats are >=10 yrs old.\n";
+                all_old(trip);
                 break;
             default:
                 cout << "Invalid selection.\n";
@@ -145,11 +152,20 @@ void clear_goats(list<Goat> &trp) {
     trp.clear();
 }
 
-void any_old(list<Goat> trp) {
+void any_old(list<Goat> &trp) {
     bool hasOldGoat = any_of(trp.begin(), trp.end(), [](Goat g) { return g.get_age() > 10; });
     if (hasOldGoat) {
         cout << "There is at least one goat aged 10 or older in the trip.\n";
     } else {
         cout << "There are no goats aged 10 or older in the trip.\n";   
+    }
+}
+
+void all_old(list<Goat> &trp) {
+    bool allOldGoats = all_of(trp.begin(), trp.end(), [](Goat g) { return g.get_age() > 10; });
+    if (allOldGoats) {
+        cout << "All goats are aged 10 or older in the trip.\n";
+    } else {
+        cout << "Not all goats are aged 10 or older in the trip.\n";
     }
 }
