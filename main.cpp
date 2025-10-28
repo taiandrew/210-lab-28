@@ -20,7 +20,7 @@ void all_old(list<Goat> trp);
 void find_goat(list<Goat> trp);
 void age_goats(list<Goat> &trp);
 void sort_goats(list<Goat> &trp);
-void delete_old_goats(list<Goat> &trp);
+void no_country_for_old_goats(list<Goat> &trp);
 
 int main() {
     srand(time(0));
@@ -91,8 +91,8 @@ int main() {
                 sort_goats(trip);
                 break;
             case 10:
-                cout << "`Deleting' old goats.\n";
-                delete_old_goats(trip);
+                cout << "No country for old goats.\n";
+                no_country_for_old_goats(trip);
                 break;
             default:
                 cout << "Invalid selection.\n";
@@ -116,6 +116,7 @@ int main_menu() {
     cout << "[7] Find a goat by name\n";
     cout << "[8] Age the goats by 1 year\n";
     cout << "[9] Sort goats\n";
+    cout << "[10] Remove old goats\n";
     cout << "[12] Quit\n";
     cout << "Choice --> ";
     int choice;
@@ -215,6 +216,6 @@ void sort_goats(list<Goat> &trp) {
     trp.sort();
 } 
 
-void delete_old_goats(list<Goat> &trp) {
-    trp.erase(remove(trp.begin(), trp.end(), [](Goat g) { return g.get_age() > 15; }), trp.end());
+void no_country_for_old_goats(list<Goat> &trp) {
+    trp.remove_if([](Goat g) { return g.get_age() > 15; });
 }
