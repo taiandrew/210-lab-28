@@ -20,6 +20,7 @@ void all_old(list<Goat> trp);
 void find_goat(list<Goat> trp);
 void age_goats(list<Goat> &trp);
 void sort_goats(list<Goat> &trp);
+void delete_old_goats(list<Goat> &trp);
 
 int main() {
     srand(time(0));
@@ -88,6 +89,10 @@ int main() {
             case 9:
                 cout << "Sorting goats.\n";
                 sort_goats(trip);
+                break;
+            case 10:
+                cout << "`Deleting' old goats.\n";
+                delete_old_goats(trip);
                 break;
             default:
                 cout << "Invalid selection.\n";
@@ -211,4 +216,5 @@ void sort_goats(list<Goat> &trp) {
 } 
 
 void delete_old_goats(list<Goat> &trp) {
+    trp.erase(remove(trp.begin(), trp.end(), [](Goat g) { return g.get_age() > 15; }), trp.end());
 }
