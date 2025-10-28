@@ -198,3 +198,4 @@ void find_goat(list<Goat> trp) {
 void age_goats(list<Goat> &trp) {
     transform(trp.begin(), trp.end(), trp.begin(), [](Goat g) { g.set_age(g.get_age() + 1); return g; });
 }
+
