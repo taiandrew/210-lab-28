@@ -17,6 +17,7 @@ void clear_goats(list<Goat> &trp);
 void any_old(list<Goat> &trp);
 void all_old(list<Goat> &trp);
 void find_goat(list<Goat> trp);
+void age_goats(list<Goat> trp);
 
 int main() {
     srand(time(0));
@@ -78,6 +79,10 @@ int main() {
             case 7:
                 find_goat(trip);
                 break;
+            case 8:
+                cout << "Aging goats by 1 year.\n";
+                age_goats(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -98,6 +103,7 @@ int main_menu() {
     cout << "[5] Check for goats >=10 yrs old\n";
     cout << "[6] Check if all goats are >=10 yrs old\n";
     cout << "[7] Find a goat by name\n";
+    cout << "[8] Age the goats by 1 year\n";
     cout << "[12] Quit\n";
     cout << "Choice --> ";
     int choice;
@@ -187,4 +193,9 @@ void find_goat(list<Goat> trp) {
     } else {
         cout << "Goat with name " << name << " not found in the trip.\n";
     }
+}
+
+void age_goats(list<Goat> trp) {
+    transform(trp.begin(), trp.end(), trp.begin(), [](Goat g) { g.set_age(g.get_age() + 1); return g; });
+    
 }
