@@ -16,6 +16,7 @@ int main_menu();
 void clear_goats(list<Goat> &trp);
 void any_old(list<Goat> &trp);
 void all_old(list<Goat> &trp);
+void find_goat(list<Goat> trp);
 
 int main() {
     srand(time(0));
@@ -74,6 +75,9 @@ int main() {
                 cout << "Checking if all goats are >=10 yrs old.\n";
                 all_old(trip);
                 break;
+            case 7:
+                find_goat(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -92,6 +96,8 @@ int main_menu() {
     cout << "[3] List goats\n";
     cout << "[4] Clear all goats\n";
     cout << "[5] Check for goats >=10 yrs old\n";
+    cout << "[6] Check if all goats are >=10 yrs old\n";
+    cout << "[7] Find a goat by name\n";
     cout << "[12] Quit\n";
     cout << "Choice --> ";
     int choice;
@@ -167,5 +173,18 @@ void all_old(list<Goat> &trp) {
         cout << "All goats are aged 10 or older in the trip.\n";
     } else {
         cout << "Not all goats are aged 10 or older in the trip.\n";
+    }
+}
+
+void find_goat(list<Goat> trp) {
+    string name;
+    cout << "Search for name: ";
+    cin >> name;
+    auto it = find_if(trp.begin(), trp.end(), [name](Goat g) { return g.get_name() == name; });
+    if (it != trp.end()) {
+        cout << "Goat found: " ;
+        cout << "\t" << it->get_name() << " (" << it->get_age() << ", " << it->get_color() << ")\n";
+    } else {
+        cout << "Goat with name " << name << " not found in the trip.\n";
     }
 }
