@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <random>
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -18,6 +19,7 @@ void any_old(list<Goat> trp);
 void all_old(list<Goat> trp);
 void find_goat(list<Goat> trp);
 void age_goats(list<Goat> &trp);
+void sort_goats(list<Goat> &trp);
 
 int main() {
     srand(time(0));
@@ -83,6 +85,10 @@ int main() {
                 cout << "Aging goats by 1 year.\n";
                 age_goats(trip);
                 break;
+            case 9:
+                cout << "Sorting goats.\n";
+                sort_goats(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -104,6 +110,7 @@ int main_menu() {
     cout << "[6] Check if all goats are >=10 yrs old\n";
     cout << "[7] Find a goat by name\n";
     cout << "[8] Age the goats by 1 year\n";
+    cout << "[9] Sort goats\n";
     cout << "[12] Quit\n";
     cout << "Choice --> ";
     int choice;
@@ -199,3 +206,9 @@ void age_goats(list<Goat> &trp) {
     transform(trp.begin(), trp.end(), trp.begin(), [](Goat g) { g.set_age(g.get_age() + 1); return g; });
 }
 
+void sort_goats(list<Goat> &trp) {
+    trp.sort();
+} 
+
+void delete_old_goats(list<Goat> &trp) {
+}
