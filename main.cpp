@@ -9,11 +9,11 @@ using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25;
 
+int main_menu();
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
-int main_menu();
 void clear_goats(list<Goat> &trp);
 void any_old(list<Goat> trp);
 void all_old(list<Goat> trp);
@@ -106,7 +106,6 @@ int main() {
         sel = main_menu();
     }
     
-
     return 0;
 }
 
