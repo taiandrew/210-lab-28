@@ -227,6 +227,6 @@ void no_country_for_old_goats(list<Goat> &trp) {
 }
 
 void total_age(list<Goat> trp) {
-    int sum = accumulate(trp.begin(), trp.end(), 0,  });
+    int sum = accumulate(trp.begin(), trp.end(), 0, [](int total, Goat g) { return total + g.get_age(); });
     cout << "Total age of all goats is " << sum << " years.\n";
 }
