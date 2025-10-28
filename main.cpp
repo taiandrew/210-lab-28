@@ -21,6 +21,7 @@ void find_goat(list<Goat> trp);
 void age_goats(list<Goat> &trp);
 void sort_goats(list<Goat> &trp);
 void no_country_for_old_goats(list<Goat> &trp);
+void total_age(list<Goat> trp);
 
 int main() {
     srand(time(0));
@@ -94,6 +95,10 @@ int main() {
                 cout << "No country for old goats.\n";
                 no_country_for_old_goats(trip);
                 break;
+            case 11:
+                cout << "Calculating total age of goats.\n";
+                total_age(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -117,6 +122,7 @@ int main_menu() {
     cout << "[8] Age the goats by 1 year\n";
     cout << "[9] Sort goats\n";
     cout << "[10] Remove old goats\n";
+    cout << "[11] Find total age of goats\n";
     cout << "[12] Quit\n";
     cout << "Choice --> ";
     int choice;
@@ -218,4 +224,9 @@ void sort_goats(list<Goat> &trp) {
 
 void no_country_for_old_goats(list<Goat> &trp) {
     trp.remove_if([](Goat g) { return g.get_age() > 15; });
+}
+
+void total_age(list<Goat> trp) {
+    int sum = accumulate(trp.begin(), trp.end(), 0,  });
+    cout << "Total age of all goats is " << sum << " years.\n";
 }
