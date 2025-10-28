@@ -14,10 +14,10 @@ void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 int main_menu();
 void clear_goats(list<Goat> &trp);
-void any_old(list<Goat> &trp);
-void all_old(list<Goat> &trp);
+void any_old(list<Goat> trp);
+void all_old(list<Goat> trp);
 void find_goat(list<Goat> trp);
-void age_goats(list<Goat> trp);
+void age_goats(list<Goat> &trp);
 
 int main() {
     srand(time(0));
@@ -164,7 +164,7 @@ void clear_goats(list<Goat> &trp) {
     trp.clear();
 }
 
-void any_old(list<Goat> &trp) {
+void any_old(list<Goat> trp) {
     bool hasOldGoat = any_of(trp.begin(), trp.end(), [](Goat g) { return g.get_age() > 10; });
     if (hasOldGoat) {
         cout << "There is at least one goat aged 10 or older in the trip.\n";
@@ -173,7 +173,7 @@ void any_old(list<Goat> &trp) {
     }
 }
 
-void all_old(list<Goat> &trp) {
+void all_old(list<Goat> trp) {
     bool allOldGoats = all_of(trp.begin(), trp.end(), [](Goat g) { return g.get_age() > 10; });
     if (allOldGoats) {
         cout << "All goats are aged 10 or older in the trip.\n";
@@ -195,7 +195,6 @@ void find_goat(list<Goat> trp) {
     }
 }
 
-void age_goats(list<Goat> trp) {
+void age_goats(list<Goat> &trp) {
     transform(trp.begin(), trp.end(), trp.begin(), [](Goat g) { g.set_age(g.get_age() + 1); return g; });
-    
 }
